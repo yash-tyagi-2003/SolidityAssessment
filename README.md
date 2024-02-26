@@ -22,21 +22,22 @@ Smart Contract Details
 balances: A mapping of addresses to unsigned integers, storing the balance of each address.
 
 ## <span style="font-size:16px;">Mint Function</span>
-
+```solidity
 function mint(address _receiver, uint _value) public {
     totalSupply += _value;
     balances[_receiver] += _value;
 }
-
+```
 The mint function increases the total supply by _value and adds the same value to the balance of the specified address (_receiver).
 
 ## <span style="font-size:16px;">Burn Function</span>
-
+```solidity
 function burn(address _sender, uint _value) public {
     require(balances[_sender] >= _value, "Insufficient balance");
     totalSupply -= _value;
     balances[_sender] -= _value;
 }
+```
 The burn function checks if the sender's balance is sufficient, and if so, it deducts the specified value from both the total supply and the sender's balance.
 
 ## <span style="font-size:16px;">Usage</span>
